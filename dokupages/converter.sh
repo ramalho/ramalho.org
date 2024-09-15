@@ -1,0 +1,15 @@
+pandoc luciano_ramalho.txt -f dokuwiki -t markdown -o luciano_ramalho.md
+pandoc teste.txt -f dokuwiki -t markdown -o teste.md
+pandoc flagship.txt -f dokuwiki -t markdown -o flagship.md
+pandoc passdrill.txt -f dokuwiki -t markdown -o passdrill.md
+pandoc roy_vende_a_thoughtworks.txt -f dokuwiki -t markdown -o roy_vende_a_thoughtworks.md
+pandoc gerenciador_de_senhas.txt -f dokuwiki -t markdown -o gerenciador_de_senhas.md
+pandoc analogia_do_banffy.txt -f dokuwiki -t markdown -o analogia_do_banffy.md
+pandoc start.txt -f dokuwiki -t markdown -o start.md
+pandoc o_capitao_que_virou_rato.txt -f dokuwiki -t markdown -o o_capitao_que_virou_rato.md
+pandoc eleusis.txt -f dokuwiki -t markdown -o eleusis.md
+pandoc oficina_de_tdd_em_go.txt -f dokuwiki -t markdown -o oficina_de_tdd_em_go.md
+pandoc evolucao_do_flagship.txt -f dokuwiki -t markdown -o evolucao_do_flagship.md
+pandoc porque_cada_pessoa_deve_ter_seu_site_na_web.txt -f dokuwiki -t markdown -o porque_cada_pessoa_deve_ter_seu_site_na_web.md
+pandoc porque_escolhi_o_dokuwiki.txt -f dokuwiki -t markdown -o porque_escolhi_o_dokuwiki.md
+pandoc boas_praticas_para_lidar_com_hashes_de_senhas.txt -f dokuwiki -t markdown -o boas_praticas_para_lidar_com_hashes_de_senhas.md
