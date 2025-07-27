@@ -17,7 +17,7 @@ mas ambas foram criadas desde o início
 para facilitar a progamação concorrente,
 executando tranquilamente centenas de milhares
 de tarefas em memória ao mesmo tempo,
-e usando todos os núcleos disponíveis na máquina, 
+e usando todos os núcleos disponíveis na máquina,
 sem desculpas.
 
 Qual estudar?
@@ -29,7 +29,7 @@ treinar programação funcional,
 entender mais sobre sistemas distribuídos.
 Daí não tenho dúvida que Elixir é a escolha certa.
 
-Elixir foi criada por 
+Elixir foi criada por
 [José Valim](https://bsky.app/profile/josevalim.bsky.social),
 que era um colaborador importante do projeto Ruby on Rails.
 A tecnologia WebSockets aumentou a demanda por concorrência
@@ -94,7 +94,7 @@ Sabe dar espaço e elevar outros colaboradores.
 
 Agora voltando ao mundo de Elixir,
 encontro mais novidades impressionantes:
-um compilador capaz de fazer inferência 
+um compilador capaz de fazer inferência
 de tipos para sinalizar bugs sem que
 você precise escrever anotações de tipos;
 um compilador para WASM ([Popocorn](https://popcorn.swmansion.com/)),
@@ -130,14 +130,14 @@ Logo mais farei umas atividades lá no
 Aprecie sem moderação!
 
 
-[^1]: Em contraste com Python, onde temos 
+[^1]: Em contraste com Python, onde temos
 [três modelos de concorrência](https://pythonfluente.com/2/#ch_concurrency_models)
 na biblioteca padrão,
 cada um severamente limitado à sua maneira.
 Processos podem usar todos os núcleos,
 mas usam muita memória e a comunicação entre eles é complicada e lenta.
 Threads compartilham um processo, então podem se comunicar bem melhor,
-mas no Python só conseguem usar um núcleo. 
+mas no Python só conseguem usar um núcleo.
 Threads são mais leves que processos,
 mas não tão leves que dê para acionar centenas de milhares
 de threads de uma vez.
@@ -152,9 +152,9 @@ aumentando o trabalho do laço de eventos.
 Resta ao usuário de Python escolher
 qual o modelo menos ruim em cada caso de uso.
 
-[^2]: A plataforma Java sofre de um problema parecido:
+[^2]: Java sofre de um problema parecido:
 a JVM com JIT é boa, a biblioteca padrão dá pro gasto,
-o eco-sistema é excepcional
+o eco-sistema é excepcional,
 mas a *linguagem Java* é pobre em mecanismos de abstração,
-forçando a gente a escrever/ler/manter muito *boilerplate*.
+forçando todo mundo a escrever/ler/manter muito *boilerplate*.
 Se eu tivesse que programar para JVM, usaria Clojure.
