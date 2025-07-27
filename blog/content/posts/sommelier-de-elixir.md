@@ -120,8 +120,7 @@ você pode iniciar uma computação demorada em
 uma célula e seguir computando em outras
 células enquanto a primeira continua processando.
 
-Sempre que volto a mergulhar em Elixir,
-a sensação é a mesma:
+Sempre que volto a explorar Elixir
 parece que acordei alguns anos no futuro.
 
 Siga-me no
