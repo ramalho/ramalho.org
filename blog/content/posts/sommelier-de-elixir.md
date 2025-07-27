@@ -18,21 +18,24 @@ para facilitar a progamação concorrente,
 executando tranquilamente centenas de milhares
 de tarefas em memória ao mesmo tempo,
 e usando todos os núcleos disponíveis na máquina, 
-sem desculpas.[^1]
+sem desculpas.
 
 Qual estudar?
-Se a prioridade fosse mudar de emprego, escolheria Go
-porque tem mais vagas.
-Mas quero aprender conceitos novos,
+Se a prioridade fosse procurar um emprego,
+escolheria Go porque tem mais vagas.
+
+Mas agora quero aprender conceitos novos,
 treinar programação funcional,
 entender mais sobre sistemas distribuídos.
 Daí não tenho dúvida que Elixir é a escolha certa.
 
-Elixir foi criada por José Valim,
+Elixir foi criada por 
+[José Valim](https://bsky.app/profile/josevalim.bsky.social),
 que era um colaborador importante do projeto Ruby on Rails.
-Concorrência é um ponto fraco em Ruby (assim como em Python).
-Valim foi pesquisar linguagens com foco em concorrência
-e encontrou
+A tecnologia WebSockets aumentou a demanda por concorrência
+de alto desempenho na Web.
+Mas concorrência é um ponto fraco em Ruby (assim como em Python[^1]).
+Valim foi pesquisar tecnologias com foco em concorrência e encontrou
 [Erlang](https://www.erlang.org/), uma linguagem funcional
 desenvolvida para sistemas embarcados
 pela Ericsson, fabricante de equipamentos de telecomunicação.
@@ -43,12 +46,15 @@ robusto e testado em aplicações de missão crítica de alto desempenho.
 
 Dois sistemas importantes criados com Erlang/OTP são
 o WhatsApp 😲 e o switch de protocolo ATM AXD301 da Ericsson.
-Essas máquinas, com mais de um milhão de linhas de Erlang,
-ganharam fama de alcançar "9 zeros" de confiabilidade
-(cerca de 3s de downtime por ano, se fiz a conta certa).
+No WhatsApp, eles conseguem operar mais de 10 milhões de conversas
+simultâneas em cada servidor.
+Os switches da Ericcson, com mais de um milhão de linhas de Erlang,
+ganharam fama de alcançar "9 noves" de disponibilidade
+(99.9999999%, ou cerca de 32 milissegundos de downtime por ano,
+[segundo a Wikipédia](https://en.wikipedia.org/wiki/High_availability)).
 
-Tudo sensacional, exceto um aspecto: a sintaxe de Erlang
-é estranha, ruidosa, e limitada.
+Tudo sensacional, exceto um aspecto:
+a sintaxe de Erlang—inspirada em Prolog—é estranha, ruidosa, e limitada.
 Também é pobre em mecanismos de abstração,
 forçando os desenvolvedores a escrever muito código repetitivo, *boilerplate*.[^2]
 Faltava também no eco-sistema Erlang
@@ -67,12 +73,15 @@ inclusive o framework OTP.
 Nos eventos sobre Elixir em que participei,
 sempre fiquei muito impressionado com palestras e
 cursos sobre projetos importantes do eco-sistema,
-como o framework Web Phoenix—que facilita usar WebSockets
+como o framework Web
+[Phoenix](https://www.phoenixframework.org/)—que
+usa WebSockets
 para criar front-ends reativos sem escrever
-JavaScript—a elegante DSL [Ecto](https://hexdocs.pm/ecto/getting-started.html),
+JavaScript—a elegante DSL [Ecto](https://hexdocs.pm/ecto/getting-started.html)
 para manipular bancos de dados SQL e NoSQL,
-e o framework
-[Nerves](https://nerves-project.org/)—que aproveita o ferramental do Erlang/OTP
+e o framework de IoT
+[Nerves](https://nerves-project.org/)—que
+aproveita o ferramental do Erlang/OTP
 para suportar construção de sistemas embarcados robustos que podem ser
 atualizados "a quente", como os switches ATM da Ericsson.
 
@@ -124,12 +133,12 @@ Aprecie sem moderação!
 [^1]: Em contraste com Python, onde temos 
 [três modelos de concorrência](https://pythonfluente.com/2/#ch_concurrency_models)
 na biblioteca padrão,
-cada um bem limitado à sua maneira.
+cada um severamente limitado à sua maneira.
 Processos podem usar todos os núcleos,
-mas usam muita memória e a comunicação entre eles é complicada.
-Threads podem se comunicar mais fácil,
-mas só conseguem usar um núcleo; 
-e são mais leves que processos,
+mas usam muita memória e a comunicação entre eles é complicada e lenta.
+Threads compartilham um processo, então podem se comunicar bem melhor,
+mas no Python só conseguem usar um núcleo. 
+Threads são mais leves que processos,
 mas não tão leves que dê para acionar centenas de milhares
 de threads de uma vez.
 Corrotinas async são muito leves,
@@ -143,8 +152,9 @@ aumentando o trabalho do laço de eventos.
 Resta ao usuário de Python escolher
 qual o modelo menos ruim em cada caso de uso.
 
-[^2]: A plataforma Java sobre de um problema parecido:
+[^2]: A plataforma Java sofre de um problema parecido:
 a JVM com JIT é boa, a biblioteca padrão dá pro gasto,
-mas a linguagem é pobre em mecanismos de abstração,
+o eco-sistema é excepcional
+mas a *linguagem Java* é pobre em mecanismos de abstração,
 forçando a gente a escrever/ler/manter muito *boilerplate*.
-Felizmente existe Clojure.
+Se eu tivesse que programar para JVM, usaria Clojure.
