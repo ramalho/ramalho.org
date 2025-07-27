@@ -1,3 +1,7 @@
+img {
+    max-width: 100%;
+}
+
 code {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.0em;
@@ -10,7 +14,8 @@ pre:has(code) {
     background-color: #222;
     position: relative;
     width: fit-content;
-    max-width: none;
+    max-width: 100%;
+    overflow: auto;
     box-sizing: border-box;
     padding: 0.5em;
 }
@@ -31,4 +36,32 @@ th, td {
 .alert-heading {
     font-weight: bold;
     color: #700;
+}
+
+.nas-redes {
+    display: grid;
+    margin-top: 1rem;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.nas-redes p {
+    border: 1px solid black;
+    margin: 0;
+    padding: 0.5rem;
+    background-color: white;
+}
+
+.nas-redes p + p {
+    border-top: 0;
+}
+
+@media screen and (min-width: 52rem) {
+    .nas-redes {
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    }
+    .nas-redes p + p {
+        border: 1px solid black;
+        border-left: 0;
+    }
 }
