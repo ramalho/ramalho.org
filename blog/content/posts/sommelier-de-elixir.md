@@ -137,13 +137,13 @@ Logo mais farei umas atividades lá no
 Aprecie sem moderação!
 
 
-[^1]: Python e sua biblioteca padrão oferece
+[^1]: Em Python e sua biblioteca padrão temos
 [três modelos de concorrência](https://pythonfluente.com/2/#ch_concurrency_models),
 cada um severamente limitado à sua maneira.
 Processos podem usar todos os núcleos,
 mas usam muita memória e a comunicação entre eles é complicada e lenta.
 Threads compartilham um processo, então podem se comunicar bem melhor,
-mas no Python só conseguem usar um núcleo.
+mas no Python todas as threads disputam o mesmo núcleo da CPU.
 Threads são mais leves que processos,
 mas não tão leves que seja possível ter centenas de milhares
 de threads de uma vez na memória.
