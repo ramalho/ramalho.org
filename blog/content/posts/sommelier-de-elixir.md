@@ -38,27 +38,30 @@ Elixir foi criada por
 que era um colaborador importante do projeto Ruby on Rails.
 A tecnologia WebSockets aumentou a demanda por concorrência
 de alto desempenho na Web.
-Mas concorrência é um ponto fraco em Ruby (assim como em Python[^1]).
+Mas concorrência é um ponto fraco em Ruby (assim como em Python).[^1]
 Valim foi pesquisar tecnologias com foco em concorrência e encontrou
 [Erlang](https://www.erlang.org/), uma linguagem funcional
-desenvolvida para sistemas embarcados
-pela Ericsson, fabricante de equipamentos de telecomunicação.
+desenvolvida pela Ericsson,
+fabricante de equipamentos de telecomunicação que exigem
+alta disponibilidade e escalabilidade horizontal.
 O eco-sistema Erlang inclui uma máquina virtual com JIT,
 chamada BEAM, e também o OTP—um framework para a construção
 de sistemas distribuídos tolerantes a falhas,
 robusto e testado em aplicações de missão crítica de alto desempenho.
 
 Dois sistemas importantes criados com Erlang/OTP são
-o WhatsApp 😲 e o switch de protocolo ATM AXD301 da Ericsson.
-No WhatsApp, eles conseguem operar mais de 10 milhões de conversas
-simultâneas em cada servidor.
-Os switches da Ericcson, com mais de um milhão de linhas de Erlang,
-ganharam fama de alcançar "9 noves" de disponibilidade
+o WhatsApp e o switch de protocolo ATM AXD301 da Ericsson.
+No WhatsApp, Erlang sustenta mais de
+[2 milhões de concexões TCP/IP](https://blog.whatsapp.com/1-million-is-so-2011)
+simultâneas em cada servidor (o post é de 2012 😲).
+Os switches da Ericcson, com mais de um milhão de linhas de código,
+alcançam "9 noves" de disponibilidade
 (99.9999999%, ou cerca de 32 milissegundos de downtime por ano,
 [segundo a Wikipédia](https://en.wikipedia.org/wiki/High_availability)).
 
 Tudo sensacional, exceto um aspecto:
-a sintaxe de Erlang—inspirada em Prolog—é estranha, ruidosa, e limitada.
+a sintaxe de Erlang foi inspirada em Prolog.
+É estranha, ruidosa, e limitada.
 Também é pobre em mecanismos de abstração,
 forçando os desenvolvedores a escrever muito código repetitivo, *boilerplate*.[^2]
 Faltava também no eco-sistema Erlang
@@ -134,22 +137,21 @@ Logo mais farei umas atividades lá no
 Aprecie sem moderação!
 
 
-[^1]: Em contraste com Python, onde temos
-[três modelos de concorrência](https://pythonfluente.com/2/#ch_concurrency_models)
-na biblioteca padrão,
+[^1]: Python e sua biblioteca padrão oferece
+[três modelos de concorrência](https://pythonfluente.com/2/#ch_concurrency_models),
 cada um severamente limitado à sua maneira.
 Processos podem usar todos os núcleos,
 mas usam muita memória e a comunicação entre eles é complicada e lenta.
 Threads compartilham um processo, então podem se comunicar bem melhor,
 mas no Python só conseguem usar um núcleo.
 Threads são mais leves que processos,
-mas não tão leves que dê para acionar centenas de milhares
-de threads de uma vez.
+mas não tão leves que seja possível ter centenas de milhares
+de threads de uma vez na memória.
 Corrotinas async são muito leves,
-você pode ter milhões delas ativas,
-mas só usam uma thread, portanto só um núcleo.
+podemos ter milhões delas ativas,
+mas todas usarão a mesma thread, portanto só um núcleo.
 Qualquer sistema assíncrono limitado a um núcleo da CPU
-exige medições e otimizações constantes
+exige monitoramento, testes, e otimizações constantes
 para não se tornar cada vez mais lento
 à medida que novas funcionalidades são implementadas,
 aumentando o trabalho do laço de eventos.
