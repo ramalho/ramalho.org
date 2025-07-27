@@ -10,7 +10,8 @@ Depois que escrevi
 [Fluent Python](https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/),
 duas linguagens me chamaram a atenção:
 [Elixir](https://elixir-lang.org/)
-e Go.
+e
+[Go](https://go.dev/).
 
 Go e Elixir são muito diferentes,
 mas ambas foram criadas desde o início
@@ -18,9 +19,12 @@ para facilitar a progamação concorrente,
 executando tranquilamente centenas de milhares
 de tarefas em memória ao mesmo tempo,
 e usando todos os núcleos disponíveis na máquina,
-sem desculpas.
+sem desculpas ou gambiarras.
 
 Qual estudar?
+
+<!--more-->
+
 Se a prioridade fosse procurar um emprego,
 escolheria Go porque tem mais vagas.
 
