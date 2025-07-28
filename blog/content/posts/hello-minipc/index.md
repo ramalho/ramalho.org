@@ -140,14 +140,14 @@ Os passos 4 e 5 fazem ligar e desligar o led.
 
 Sucesso!!! 🎉🎉🎉
 
-E finalmente, escrevi uma função anônima para piscar o led:
+Finalmente, escrevi uma função para piscar o led:
 
 ```elixir
 blink = fn led ->
   Stream.cycle([1, 0]) |> 
   Enum.each(fn state ->
     GPIO.write(led, state)
-    Process.sleep(500)  # 500ms delay between state changes
+    Process.sleep(500)
   end)
 end
 ```
