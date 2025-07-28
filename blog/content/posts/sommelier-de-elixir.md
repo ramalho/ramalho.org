@@ -15,7 +15,7 @@ e
 
 Go e Elixir são muito diferentes,
 mas ambas foram criadas desde o início
-para facilitar a progamação concorrente,
+para facilitar a programação concorrente,
 executando tranquilamente centenas de milhares
 de tarefas em memória ao mesmo tempo,
 e usando todos os núcleos disponíveis na máquina,
@@ -38,16 +38,18 @@ Elixir foi criada por
 que era um colaborador importante do projeto Ruby on Rails.
 A tecnologia WebSockets aumentou a demanda por concorrência
 de alto desempenho na Web.
-Mas concorrência é um ponto fraco em Ruby (assim como em Python).[^1]
+Mas concorrência é um ponto fraco em Ruby (assim como em Python[^1]).
 Valim foi pesquisar tecnologias com foco em concorrência e encontrou
-[Erlang](https://www.erlang.org/), uma linguagem funcional
-desenvolvida pela Ericsson,
+[Erlang](https://www.erlang.org/),
+uma linguagem funcional de tipagem dinâmica desenvolvida pela Ericsson,
 fabricante de equipamentos de telecomunicação que exigem
 alta disponibilidade e escalabilidade horizontal.
 O eco-sistema Erlang inclui uma máquina virtual com JIT,
-chamada BEAM, e também o OTP—um framework para a construção
+chamada BEAM, e também o OTP—o framework criado pela Ericsson para a construção
 de sistemas distribuídos tolerantes a falhas,
 robusto e testado em aplicações de missão crítica de alto desempenho.
+Tudo isso é software livre, e a Ericsson não lidera mais o desenvolvimento.
+Erlang é hoje um projeto da comunidade, assim como Python e Ruby.
 
 Dois sistemas importantes criados com Erlang/OTP são
 o WhatsApp e o switch de protocolo ATM AXD301 da Ericsson.
@@ -59,7 +61,7 @@ alcançam "9 noves" de disponibilidade
 (99.9999999%, ou cerca de 32 milissegundos de downtime por ano,
 [segundo a Wikipédia](https://en.wikipedia.org/wiki/High_availability)).
 
-Tudo sensacional, exceto um aspecto:
+Tudo excelente, exceto um aspecto:
 a sintaxe de Erlang foi inspirada em Prolog.
 É estranha, ruidosa, e limitada.
 Também é pobre em mecanismos de abstração,
