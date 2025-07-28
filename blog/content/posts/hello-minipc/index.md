@@ -26,10 +26,10 @@ que são microcontroladores.[^1]
 Para hackeragem eletrônica com Elixir, é preciso um minipc,
 onde a gente instala um firmware com Nerves—o framework de IoT.
 Um dos minipc mais baratos que rodam Nerves é o Raspberry Pi Zero W.
+
 Agora tem um projeto muito bacana chamado
 [Elixir Circuits](https://github.com/elixir-circuits),
 que facilita muito os primeiros passos.
-
 O único software que você precisa instalar no seu computador é o
 [fwup](https://github.com/fwup-home/fwup),
 que grava imagens em um cartão microSD para instalar no Raspberry Pi.
