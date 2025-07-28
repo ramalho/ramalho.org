@@ -135,8 +135,8 @@ iex(5)> GPIO.write(led, 0)
 No passo 2, configurei o pino 18 para saída.
 Em seguida, usei a função `v()` para recuperar o resultado anterior
 e vincular a variável `led` ao segundo valor da tupla
-devolvida por `GPIO.open(18, :output).
-Os passos 4 e 5 são ligar e desligar o led.
+devolvida por `GPIO.open(18, :output)`.
+Os passos 4 e 5 fazem ligar e desligar o led.
 
 Sucesso!!! 🎉🎉🎉
 
