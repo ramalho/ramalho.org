@@ -59,7 +59,7 @@ Sucesso! 🎉
 
 Daí fiz SSH para lá, usuário `circuits`, senha `circuits`.
 
-Daí aparece esse textão todo:
+Então aparece esse textão:
 
 ```sh
 % ssh circuits@nerves.local
