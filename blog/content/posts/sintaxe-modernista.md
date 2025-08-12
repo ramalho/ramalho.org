@@ -20,8 +20,9 @@ no NumPy: `a @ b` (ou qualquer classe que implemente `__matmul__`).
 A sintaxe de Rust me assusta um pouco: `struct Foo<'a> { bar: &'a Bar }`.
 C++ é uma catedral gótica, [Raku](https://raku.org/) é barroca,
 Lisp é modernista raiz Bauhaus, a sintaxe mais simples possível,
-tão simples que chega a ser incômoda.
-Frígida no inverno, tórrida no verão.
+`(f x y)`, tão simples que chega a ser incômoda.
+Como uma casa modernista feita só de retângulos de concreto e vidro:
+frígida no inverno, tórrida no verão.
 
 Veja a definição de uma função para calcular o MDC (Máximo Divisor Comum)
 em Scheme, dialeto de Lisp com a mesmo tipo de sintaxe
