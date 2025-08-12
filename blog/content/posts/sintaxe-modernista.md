@@ -85,7 +85,7 @@ serão invocadas antes e seus resultados serão passados para `concurrent`.
 Mas se `concurrent` for uma _forma especial_[^2] ou uma _macro_ em Scheme,
 daí tudo é possível.
 
-[^2]: algo que seria uma sintaxe especial com uma palavra reservada,
+[^2]: algo que teria uma sintaxe especial com uma palavra reservada,
 como `with` ou `await` em Python.
 
 Exemplo de "tudo é possível": o `if` do Scheme pode até parecer uma chamada
