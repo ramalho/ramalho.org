@@ -297,9 +297,10 @@ Também acho mais bonito `<>` do que `!=`.
 
 A versão com atribuição paralela de tupla pode ser assim:
 
-```def{mdc [m n]
+```
+def{mdc [m n]
     while{ <>(n 0)
-        ={[m n] = [n modulo(m n)]}
+        ={[m n] [n modulo(m n)]}
     }
     m
 }
