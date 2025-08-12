@@ -144,8 +144,8 @@ Finalmente, escrevi uma função para piscar o led:
 
 ```elixir
 blink = fn led ->
-  Stream.cycle([1, 0]) |> 
-  Enum.each(fn state ->
+  Stream.cycle([1, 0])
+  |> Enum.each(fn state ->
     GPIO.write(led, state)
     Process.sleep(500)
   end)

@@ -10,7 +10,7 @@ A sintaxe é a interface de usuário de uma linguagem de programação.
 
 Gosto muito da sintaxe do Python.
 Tem um estilo modernista: linhas retas, poucos adornos.
-Outras linguagens são cheias de `$`, `&`, `->`, `{...}`, `;`, `@`.
+Outras linguagens são cheias de `$`, `&`, `->`, `{…}`, `;`, `@`.
 
 Python já foi mais simples.
 O símbolo `@` não fazia parte da sintaxe até o Python 2.4,
@@ -24,11 +24,20 @@ Lisp é modernista raiz Bauhaus, a sintaxe mais simples possível,
 Como uma casa modernista feita só de retângulos de concreto e vidro:
 frígida no inverno, tórrida no verão.
 
-Veja a definição de uma função para calcular o MDC (Máximo Divisor Comum)
-em Scheme, dialeto de Lisp com a mesmo tipo de sintaxe
-(conhecida como _S-expression_):
+## A sintaxe de Lisp e Scheme
 
-```scheme
+A sintaxe de Lisp é famosa pelos parentesis por toda parte.
+É uma sintaxe conhecida como *S-expression*.
+
+O problema é que o uso generalizado de `(…)` não comunica
+visualmente a diferença entre semânticas diferentes.
+O ideal é que diferenças semânticas sejam representadas
+por sintaxes diferentes.
+
+Veja a definição de uma função para calcular o MDC (Máximo Divisor Comum)
+em Scheme, uma variante de Lisp que também usa _S-expressions_:
+
+```
 (define (mdc m n)
     (if (= n 0)
         m
@@ -37,13 +46,13 @@ em Scheme, dialeto de Lisp com a mesmo tipo de sintaxe
 
 Para chamar essa função:
 
-```scheme
+```
 (mdc 18 45)
 ```
 
 Em Python, esse algoritmo de MDC recursivo fica assim:[^1]
 
-```python
+```
 def mdc(m, n):
     if n == 0:
         return m
@@ -53,51 +62,61 @@ def mdc(m, n):
 
 E a chamada:
 
-```python
+```
 mdc(18, 45)
 ```
 
-[^1]: A solução funciona mas consome muita memória em Python,
+[^1]: Essa função funciona mas não é eficiente em Python.
+Escrevi assim para ficar parecida com a função `mdc` em Scheme.
+No Python, a `mdc` recursiva pode usar muita memória na pilha de execução
 se os argumentos forem inteiros grandes.
-Scheme tem recursão de cauda otimizada:
-como a chamada recursiva está no fim do corpo da função,
+Scheme tem _recursão de cauda_ otimizada:
+quando a chamada recursiva está no fim do corpo da função,
 o interpretador salta para a próxima iteração reaproveitando
-o frame atual, sem criar novo frame no stack.
+o frame atual, sem criar novo frame na pilha.
 
-Assim como gosto que Python não usa `;` no final das instrções,
-também gosto que em Scheme não há `,` separando os argumentos,
+Gosto que Python não usa `;` no final das instruções,
+e também gosto que Scheme não usa `,` para separar os argumentos,
 só espaços.
 
-O que me incomoda mais no Scheme não é o excesso de parentesis,
-mas o fato de que eles delimitam construções muito diferentes:
-instuções como `(define ...)` ou `(if ...)`, chamadas de função
+O que me incomoda mais nos parentesis de Scheme é
+que eles delimitam construções muito diferentes:
+instruções como `(define …)` ou `(if …)`, chamadas de função
 `(modulo m n)`, e até listas `(0 1 2 3)`.
 
 Em algum código legado você pode encontrar isso:
 
-```scheme
-(concurrent (fetch urls) (file out))
+```
+(concurrent (fetch (urls)) (file out))
 ```
 
 Será que `concurrent` é uma função ou uma instrução especial?
-Se for uma função, você sabe que `(fetch urls)` e `(file out)`
+Se for uma função, você sabe que `(fetch (urls))` e `(file out)`
 serão invocadas antes e seus resultados serão passados para `concurrent`.
 
 Mas se `concurrent` for uma _forma especial_[^2] ou uma _macro_ em Scheme,
 daí tudo é possível.
 
-[^2]: algo que teria uma sintaxe especial com uma palavra reservada,
-como `with` ou `await` em Python.
+[^2]: Em Python uma _forma especial_ tem uma sintaxe especial com uma palavra reservada,
+como `with` ou `await`.
+
+## Porque if não pode ser uma função
 
 Exemplo de "tudo é possível": o `if` do Scheme pode até parecer uma chamada
-de função `(if a (b) (c))`, mas o que acontece é que o valor de `a` determina
+de função:
+
+```
+(if a (b) (c))
+```
+
+Mas o que acontece é que o valor de `a` determina
 se `(b)` ou `(c)` é invocada, nunca as duas.
 
-Agora, se o `if` fosse uma função, poderia ser o fim da humanidade.
+Agora, se o `if` fosse uma função, poderia causar o fim da humanidade.
 
 Considere esta linha de código num sistema de lançamento de mísseis nucleares:
 
-```scheme
+```
 (if (checar senha) (lançar mísseis) (desativar mísseis))
 ```
 
@@ -109,87 +128,92 @@ Toda vez seria assim.
 A função `if` seria invocada só depois de executadas essas três chamadas,
 recebendo seus três valores como argumentos.
 
-O problema é que a sintaxe `(select y z)` pode ser uma chamada de função,
-a aplicação de uma instrução especial `select`, ou até uma
-lista contendo três identificadores, dependendo do contexto.
-
 Em Python a sintaxe de uma instrução condicional é
-bem diferente de chamada de função: `if senha: salvar(senha)`.
+bem diferente de chamada de função:
 
-Na sintaxe de S-expression, isso seria `(if senha (salvar senha))`.
+```
+if senha: salvar(senha)
+```
 
-Como eu disse, Lisp tem uma sintaxe simples demais,
-tão simples que não há diferença visual entre instruções especiais,
-chamadas de função, e listas.
+Na sintaxe de S-expression, isso seria
 
-Se eu fosse inventar uma linguagem, buscaria uma sintaxe mais enxuta que Python,
+```
+(if senha (salvar senha))
+```
+
+## Inventando uma sintaxe modernista melhor
+
+Se eu fosse inventar uma linguagem de brinquedo simples,
+buscaria uma sintaxe mais enxuta que Python,
 mas um pouco mais enfeitada que Scheme,
 com mais sinais gráficos para ajudar na leitura.
 
-Vamos chamar de sintaxe L. O exemplo dos mísseis ficaria assim:
+Estou criando a *sintaxe M*. O exemplo dos mísseis ficaria assim:
 
 ```
 if {validar(senha) lançar(mísseis) desativar(mísseis)}
 ```
 
-A sintaxe geral é `ident「 . . . 」`
+A sintaxe geral é `ident「 … 」`
 onde `ident` é um identificador, seguido de zero ou mais expressões
 entre delimitadores que podem ser:
 
-`()` delimitando os argumentos em uma chamada de função;
+`()` para delimitar os argumentos em uma chamada de função;
 
-`{}` delimitando o corpo de uma instrução especial;
+`{}` para delimitar o corpo de uma instrução especial;
 
-`[]` delimitando uma sequência de itens de dados (estou sendo vago de propósito, logo mais explico).
+`[]` para delimitar uma sequência de itens de dados (estou sendo vago de propósito, logo mais explico).
 
-Voltando a esse exemplo de S-expression misteriosa:
-
-```scheme
-(concurrent (fetch urls) (file out))
-```
-
-Na sintaxe L, poderia ser:
+Voltando ao exemplo da *S-expression* misteriosa:
 
 ```
-concurrent(fetch(urls) file(out))
+(concurrent (fetch (urls)) (file out))
 ```
 
-Isso seria uma chamada de função `concurrent` com os argumentos `fetch(urls)` e `file(out)`.
+Na *sintaxe M*, poderia ser:
+
+```
+concurrent(fetch(urls()) file(out))
+```
+
+Isso seria uma chamada de função `concurrent` com os argumentos `fetch(urls())` e `file(out)`.
 
 Outra semântica teria outra sintaxe:
 
 ```
-concurrent{fetch(urls) file(out)}
+concurrent{fetch [urls] file(out)}
 ```
 
-Nesse caso `concurrent` seria uma forma especial, com uma semântica diferente
-no tratamento de `fetch(urls)` e `file(out)`.
+Nesse caso as `{}` indicam que `concurrent` é uma forma especial,
+que pode implementar uma semântica diferente
+no tratamento de `fetch`, `[urls]` e `file(out)`.
 Por exemplo (inventando agora) o comportamento poderia ser:
 `fetch` seria invocada de modo concorrente em
-diferentes threads, uma cada para cada item de `urls` (que poderia ser uma lista),
-e `file(out)` seria invocada no final para armazenar os resultados.
+diferentes threads, uma cada para cada item de `[urls]`,
+e `file(out)` seria invocada no final para capturar os resultados.
 
 Uma terceria variação seria:
 
 ```
-concurrent{fetch(urls) [file out]}
+concurrent{fetch [urls] [file out]}
 ```
 
 Nesse caso, `[file out]` seria uma lista com dois identificadores dentro,
 equivalente a `[file, out]` em Python.
 
-Mas antes eu falei que a sintaxe geral é `ident「 . . . 」`,
+Antes eu falei que a sintaxe geral é `ident「 … 」`,
 então em vez de usar apenas `[]`, a sintaxe ganha muita flexibilidade
 com um identificador prefixo, que funciona como um 
 [sigil](https://en.wikipedia.org/wiki/Sigil_(computer_programming)).
-Por exemplo, `v[...]` é um vetor (uma lista unidimensional),
-`c[...]` é um conjunto, `t[...]` é uma tupla.
+Por exemplo, `v[…]` é um vetor (uma lista unidimensional),
+`c[…]` é um conjunto, `t[…]` é uma tupla.
 
 Uma tupla é uma construção tão útil que merece um atalho, então
 `t[1 2 3]` pode ser escrita sem prefixo: `[1 2 3]`.[^3]
 
-[^3]: Essa ideia surgiu quando escrevi alguns parágrafos depois,
-pensando na tupla de identificadores dos parâmetros de uma função.
+[^3]: Essa ideia surgiu depois, quando pensei na sintaxe
+para declarar uma função, onde precisei de
+uma tupla de identificadores para nomear os parâmetros.
 
 E um dicionário?
 
@@ -199,22 +223,26 @@ Um dicionário na sintaxe de Python:
 {a:1, b:2, c:3}
 ```
 
-Poderia ser assim na sintaxe L:
+Poderia ser assim na *sintaxe M*:
 
 ```
 d[a:1 b:2 c:3]
 ```
 
-Isso me forçou a reservar outro símbolo, `:` mas por enquanto temos
-apenas `(){}[]:` então está bom.
+Isso me forçou a reservar outro símbolo, `:` mas por enquanto 
+a sintaxe continua enxuta, temos só `:(){}[]` como símbolos especiais.
 
-Para atribuição, podemos usar `=` com a sintaxe de instrução especial:
+Para atribuição, podemos usar `=` com o delimitador de instrução especial:
 
 ```
 ={pi 3.1416}
 ```
 
-Outra atribuinção em Sintaxe L:
+Porque a atribuição não pode ser uma função?
+Porque o identificador `pi` pode estar sendo criado agora,
+não tem como ser avaliado como argumento para uma função.
+
+Veja outra atribuinção em *sintaxe M*:
 
 ```
 ={amostra [10 20 30]}
@@ -222,24 +250,27 @@ Outra atribuinção em Sintaxe L:
 
 Python[^4]:
 
-[^4]: Esse é um atalho válido para escrever uma tupla em Python:
-itens separados por vírgula, sem `()` delimitando.
-Funciona em alguns contextos.
-
-```python
+```
 amostra = 10, 20, 30
 ```
 
-Assim como em Scheme, na minha linguagem `=` é um identificador válido.
+[^4]: Esse é um atalho válido para escrever uma tupla em Python:
+itens separados por vírgula, sem `()` delimitando.
+Funciona em alguns contextos.
+Em outros, é preciso delimitar com `()`.
+
+Assim como em Scheme, na minha linguagem `=` é um identificador, não um símbolo especial.
 O mesmo identificador serve para o operador de comparação,
 com os delimitadores de uma chamada de função:
 
-A expressão L `=(x y)` equivale a `x == y` em Python
+A expressão `=(x y)` na *sintaxe M* equivale a `x == y` em Python
 
 Note que acabei de descartar a necessidade de uma notação infixa
 especial só para operações aritméticas.
+Isso não é tão fácil de ler, mas simplifica muito o parser.
+É uma troca válida em uma linguagem de brinquedo que seja fácil de implementar.
 
-O exemplo MDC na sintaxe L:
+O exemplo MDC na *sintaxe M*:
 
 ```
 def{mdc [m n]
@@ -253,14 +284,15 @@ def{mdc [m n]
 Pensei em escrever `%(m n)` em vez de `modulo(m n)`,
 mas achei melhor reservar o `%` para alguma outra ideia,
 já que não usamos tanto assim a operação módulo
-(no caso, o resto da divisão `m / n`, escrito como `m % n` em Python).
+(escrita como `m % n` em Python).
 
 Vamos ver agora outra forma de computar MDC,
 com laço em vez de recursão.
 
-Python idiomático:
+Python idiomático, usando atribuição de tuplas
+para atualizar duas variáveis em parelo.
 
-```python
+```
 
 def mdc(m, n):
     while n != 0:
@@ -268,9 +300,9 @@ def mdc(m, n):
     return m
 ```
 
-Python sem usar atribuição paralela de tuplas:
+Python sem usar atribuição paralela:
 
-```python
+```
 def mdc(m, n):
     while n != 0:
         temp = n
@@ -279,7 +311,7 @@ def mdc(m, n):
     return m
 ```
 
-Sintaxe L:
+*Sintaxe M*:
 
 ```
 def{mdc [m n]
@@ -292,9 +324,16 @@ def{mdc [m n]
 }
 ```
 
-Para o operador _diferente de_, escolhi `<>` (como em Pascal)
+A semântica de `while{}` controla um corpo com N expressões.
+A cada volta do laço, a primeira expressão é avaliada.
+Enquanto ela é verdadeira,
+as demais expressões são executadas.
+Quando a primeira expressão é falsa, o laço termina.
+
+Para o operador *diferente de*, escolhi `<>` (como em Pascal)
 para reservar o `!` para algum uso posterior.
-Também acho mais bonito `<>` do que `!=`.
+Também acho mais bonita a simetria de `<>` em contraste com `!=`.
+Acredito no valor da estética para tomar decisões de sintaxe.
 
 A versão com atribuição paralela de tupla pode ser assim:
 
@@ -307,19 +346,58 @@ def{mdc [m n]
 }
 ```
 
-Isso é viável porque `={...}` denota uma instrução especial,
+Isso é viável porque `={…}` denota uma instrução especial,
 então temos a liberdade de implementar variações sintáticas dentro dela.
+Quando a primeira expressão de `={…}` é uma tupla de identificadores,
+a expressão seguinte será avaliada e seus itens atribuídos aos
+identificadores, respectivamente.
 
-and:
+## Delimitadores diferentes indicam semânticas diferentes
 
-&{...}  # short circuit
-&(...)  # bitwise
+Assim como temos `=(…)` e `={…}` com semânticas diferentes,
+podemos usar a *sintaxe M* para expressar os dois operadores de
+conjunção em Python: `and` e `&`.
 
+O `and` de Python é um operador especial que não pode ser
+sobrecarregado, porque ele tem uma regra de avaliação
+difente dos operadores comuns: na expressão `a() and b()`,
+a função `b()` só será executada se `a()` devolver um
+valor verdadeiro. Isso se chama "avaliação em curto circuito":
+quando o primeiro operando é falso, o segundo não é computado.
 
+Mas em `a() & b()` as duas funções
+são executadas sempre, para fornecer os argumentos
+do método `__and__` que faz o AND bit-a-bit entre inteiros.
+
+O ponto central é que diferentes regras de avaliação devem
+ter sintaxes diferentes, por isso Python tem `and` e `&`.
+
+Na *sintaxe M*, os delimitadores resolvem esse problema.
+
+* `&(a() b())` avalia `a()` e `b()`, para então aplicar `&()` aos dois resultados.
+
+* `&{a() b()}` avalia `a()`; se for verdade, avalia `b()`. A regra de avaliação é diferente.
+
+A notação infixa `x & y` tem a limitação de só acomodar dois operandos, um de cada lado.
+Na notação prefixa não temos essa limitação. A instrução `&{…}` pode ter mais argumentos:
+
+```
+&{  tamanho(senha)
+    caracteres_especiais(senha)
+    dígitos(senha)
+    maiúsculas(senha)
+    minúsculas(senha)
+}
+```
+
+Esse código aplica diferentes funções a uma senha.
+Se todas retornarem verdadeiro, o resultado é verdadeiro.
+Se uma retornar falso, o resultado será falso e as
+funções seguintes não serão chamadas.
 
 Por hoje, é só.
 
-Amanhã escrevo outro post com mais exemplos da sintaxe L.
+Amanhã escrevo outro post com mais exemplos da *sintaxe M*.
 
 > Fiado só amanhã.<br>
 > —*aviso comum em botecos no Brasil*
