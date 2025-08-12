@@ -148,21 +148,26 @@ buscaria uma sintaxe mais enxuta que Python,
 mas um pouco mais enfeitada que Scheme,
 com mais sinais gráficos para ajudar na leitura.
 
-Estou criando a *sintaxe M*. O exemplo dos mísseis ficaria assim:
+Estou criando a *sintaxe L*. O exemplo dos mísseis ficaria assim:
 
 ```
-if {validar(senha) lançar(mísseis) desativar(mísseis)}
+if{validar(senha) lançar(mísseis) desativar(mísseis)}
 ```
 
-A sintaxe geral é `ident「 … 」`
-onde `ident` é um identificador, seguido de zero ou mais expressões
-entre delimitadores que podem ser:
+Os princípios básicos da *sintaxe L* são:
+
+* Colocar o primeiro identificador fora dos delimitadores: `f(x y)` em vez de `(f x y)`.
+Faz sentido porque o primeiro elemento da expressão define o que ela faz.
+* Usar delimitadores diferentes para expressões de naturezas diferentes.
+
+A sintaxe geral é `ident「 … 」` onde `ident` é um identificador,
+seguido de zero ou mais expressões entre delimitadores que podem ser:
 
 `()` para delimitar os argumentos em uma chamada de função;
 
 `{}` para delimitar o corpo de uma instrução especial;
 
-`[]` para delimitar uma sequência de itens de dados (estou sendo vago de propósito, logo mais explico).
+`[]` para delimitar uma coleção de itens de dados (estou sendo vago de propósito, logo mais explico).
 
 Voltando ao exemplo da *S-expression* misteriosa:
 
@@ -170,7 +175,7 @@ Voltando ao exemplo da *S-expression* misteriosa:
 (concurrent (fetch (urls)) (file out))
 ```
 
-Na *sintaxe M*, poderia ser:
+Na *sintaxe L*, poderia ser:
 
 ```
 concurrent(fetch(urls()) file(out))
@@ -198,8 +203,8 @@ Uma terceria variação seria:
 concurrent{fetch [urls] [file out]}
 ```
 
-Nesse caso, `[file out]` seria uma lista com dois identificadores dentro,
-equivalente a `[file, out]` em Python.
+Aqui `[file out]` seria uma tupla com dois identificadores dentro,
+equivalente a `(file, out)` em Python.
 
 Antes eu falei que a sintaxe geral é `ident「 … 」`,
 então em vez de usar apenas `[]`, a sintaxe ganha muita flexibilidade
@@ -223,7 +228,7 @@ Um dicionário na sintaxe de Python:
 {a:1, b:2, c:3}
 ```
 
-Poderia ser assim na *sintaxe M*:
+Poderia ser assim na *sintaxe L*:
 
 ```
 d[a:1 b:2 c:3]
@@ -242,7 +247,7 @@ Porque a atribuição não pode ser uma função?
 Porque o identificador `pi` pode estar sendo criado agora,
 não tem como ser avaliado como argumento para uma função.
 
-Veja outra atribuinção em *sintaxe M*:
+Veja outra atribuinção em *sintaxe L*:
 
 ```
 ={amostra [10 20 30]}
@@ -259,18 +264,19 @@ itens separados por vírgula, sem `()` delimitando.
 Funciona em alguns contextos.
 Em outros, é preciso delimitar com `()`.
 
-Assim como em Scheme, na minha linguagem `=` é um identificador, não um símbolo especial.
+Assim como em Scheme, na minha linguagem `=` é um identificador,
+não um símbolo especial.
 O mesmo identificador serve para o operador de comparação,
 com os delimitadores de uma chamada de função:
 
-A expressão `=(x y)` na *sintaxe M* equivale a `x == y` em Python
+A expressão `=(x y)` na *sintaxe L* equivale a `x == y` em Python
 
 Note que acabei de descartar a necessidade de uma notação infixa
 especial só para operações aritméticas.
 Isso não é tão fácil de ler, mas simplifica muito o parser.
 É uma troca válida em uma linguagem de brinquedo que seja fácil de implementar.
 
-O exemplo MDC na *sintaxe M*:
+O exemplo MDC na *sintaxe L*:
 
 ```
 def{mdc [m n]
@@ -290,7 +296,7 @@ Vamos ver agora outra forma de computar MDC,
 com laço em vez de recursão.
 
 Python idiomático, usando atribuição de tuplas
-para atualizar duas variáveis em parelo.
+para atualizar duas variáveis em parelo:
 
 ```
 
@@ -311,7 +317,7 @@ def mdc(m, n):
     return m
 ```
 
-*Sintaxe M*:
+*Sintaxe M:*
 
 ```
 def{mdc [m n]
@@ -330,7 +336,7 @@ Enquanto ela é verdadeira,
 as demais expressões são executadas.
 Quando a primeira expressão é falsa, o laço termina.
 
-Para o operador *diferente de*, escolhi `<>` (como em Pascal)
+Para o operador *diferente*, escolhi `<>` (como em Pascal)
 para reservar o `!` para algum uso posterior.
 Também acho mais bonita a simetria de `<>` em contraste com `!=`.
 Acredito no valor da estética para tomar decisões de sintaxe.
@@ -355,7 +361,7 @@ identificadores, respectivamente.
 ## Delimitadores diferentes indicam semânticas diferentes
 
 Assim como temos `=(…)` e `={…}` com semânticas diferentes,
-podemos usar a *sintaxe M* para expressar os dois operadores de
+podemos usar a *sintaxe L* para expressar os dois operadores de
 conjunção em Python: `and` e `&`.
 
 O `and` de Python é um operador especial que não pode ser
@@ -372,7 +378,7 @@ do método `__and__` que faz o AND bit-a-bit entre inteiros.
 O ponto central é que diferentes regras de avaliação devem
 ter sintaxes diferentes, por isso Python tem `and` e `&`.
 
-Na *sintaxe M*, os delimitadores resolvem esse problema.
+Na *sintaxe L*, os delimitadores resolvem esse problema.
 
 * `&(a() b())` avalia `a()` e `b()`, para então aplicar `&()` aos dois resultados.
 
@@ -397,7 +403,7 @@ funções seguintes não serão chamadas.
 
 Por hoje, é só.
 
-Amanhã escrevo outro post com mais exemplos da *sintaxe M*.
+Amanhã escrevo outro post com mais exemplos da *sintaxe L*.
 
 > Fiado só amanhã.<br>
 > —*aviso comum em botecos no Brasil*
