@@ -97,13 +97,13 @@ Agora, se o `if` fosse uma função, poderia ser o fim da humanidade.
 Considere esta linha de código num sistema de lançamento de mísseis nucleares:
 
 ```scheme
-(if (validar senha) (lançar mísseis) (desativar mísseis))
+(if (checar senha) (lançar mísseis) (desativar mísseis))
 ```
 
 Se o `if` fosse uma função, as três expressões seriam avaliadas
 para então serem passadas para o `if`.
-A senha seria validadas, os mísseis seriam lançados, e também desativados,
-independente do resultado de `(validar senha)`.
+A senha seria checada, os mísseis seriam lançados, e também desativados,
+independente do resultado de `(checar senha)`.
 Toda vez seria assim.
 A função `if` seria invocada só depois de executadas essas três chamadas,
 recebendo seus três valores como argumentos.
