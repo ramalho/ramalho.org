@@ -68,8 +68,8 @@ também gosto que em Scheme não há `,` separando os argumentos,
 só espaços.
 
 O que me incomoda mais no Scheme não é o excesso de parentesis,
-mas o fato de que eles delimitam construções muito diferentes,
-como instuções como `(define ...)` ou `(if ...)`, chamadas de função
+mas o fato de que eles delimitam construções muito diferentes:
+instuções como `(define ...)` ou `(if ...)`, chamadas de função
 `(modulo m n)`, e até listas `(0 1 2 3)`.
 
 Em algum código legado você pode encontrar isso:
