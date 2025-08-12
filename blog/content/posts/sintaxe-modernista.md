@@ -21,7 +21,7 @@ A sintaxe de Rust me assusta um pouco: `struct Foo<'a> { bar: &'a Bar }`.
 C++ é uma catedral gótica, [Raku](https://raku.org/) é barroca,
 Lisp é modernista raiz Bauhaus, a sintaxe mais simples possível,
 tão simples que chega a ser incômoda.
-Gelada no inverno, quente no verão.
+Frígida no inverno, tórrida no verão.
 
 Veja a definição de uma função para calcular o MDC (Máximo Divisor Comum)
 em Scheme, dialeto de Lisp com a mesmo tipo de sintaxe
