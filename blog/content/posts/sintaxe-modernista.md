@@ -124,26 +124,29 @@ Se o `if` fosse uma função, as três expressões seriam avaliadas
 para então serem passadas para o `if`.
 A senha seria checada, os mísseis seriam lançados, e também desativados,
 independente do resultado de `(checar senha)`.
-Toda vez seria assim.
+Toda vez seria assim, incondicionalmente.
 A função `if` seria invocada só depois de executadas essas três chamadas,
 recebendo seus três valores como argumentos.
+Seria tarde demais: os mísseis já estariam voando.
 
-Em Python a sintaxe de uma instrução condicional é
+Avaliação condicional pede uma sintaxe especial.
+
+Em Python a sintaxe do `if` é
 bem diferente de chamada de função:
 
 ```
-if senha: salvar(senha)
+if validar(senha): salvar(senha)
 ```
 
 Na sintaxe de S-expression, isso seria
 
 ```
-(if senha (salvar senha))
+(if (validar senha) (salvar senha))
 ```
 
 ## Inventando uma sintaxe modernista melhor
 
-Se eu fosse inventar uma linguagem de brinquedo simples,
+Se eu fosse inventar uma linguagem experimental simples,
 buscaria uma sintaxe mais enxuta que Python,
 mas um pouco mais enfeitada que Scheme,
 com mais sinais gráficos para ajudar na leitura.
@@ -206,8 +209,8 @@ concurrent{fetch [urls] [file out]}
 Aqui `[file out]` seria uma tupla com dois identificadores dentro,
 equivalente a `(file, out)` em Python.
 
-Antes eu falei que a sintaxe geral é `ident「 … 」`,
-então em vez de usar apenas `[]`, a sintaxe ganha muita flexibilidade
+Antes eu falei que a sintaxe geral é `ident「 … 」`.
+A sintaxe ganha muita flexibilidade
 com um identificador prefixo, que funciona como um 
 [sigil](https://en.wikipedia.org/wiki/Sigil_(computer_programming)).
 Por exemplo, `v[…]` é um vetor (uma lista unidimensional),
@@ -264,17 +267,16 @@ itens separados por vírgula, sem `()` delimitando.
 Funciona em alguns contextos.
 Em outros, é preciso delimitar com `()`.
 
-Assim como em Scheme, na minha linguagem `=` é um identificador,
+Assim como em Scheme, na minha linguagem `=` seria um identificador,
 não um símbolo especial.
 O mesmo identificador serve para o operador de comparação,
 com os delimitadores de uma chamada de função:
 
 A expressão `=(x y)` na *sintaxe L* equivale a `x == y` em Python
 
-Note que acabei de descartar a necessidade de uma notação infixa
-especial só para operações aritméticas.
+Segui o exemplo de Lisp e evitei usar uma notação infixa só para operações aritméticas.
 Isso não é tão fácil de ler, mas simplifica muito o parser.
-É uma troca válida em uma linguagem de brinquedo que seja fácil de implementar.
+É uma troca válida em uma linguagem experimental que seja fácil de implementar.
 
 O exemplo MDC na *sintaxe L*:
 
@@ -388,15 +390,17 @@ A notação infixa `x & y` tem a limitação de só acomodar dois operandos, um 
 Na notação prefixa não temos essa limitação. A instrução `&{…}` pode ter mais argumentos:
 
 ```
-&{  tamanho(senha)
-    caracteres_especiais(senha)
-    dígitos(senha)
-    maiúsculas(senha)
-    minúsculas(senha)
+def{validar [senha]
+    &{  >=(len(senha) 8)
+        contem(senha '!@#$%&*-')
+        contem(senha '0123456789')
+        contem_maiúscula(senha)
+        contem_minúscula(senha)
+    }
 }
 ```
 
-Esse código aplica diferentes funções a uma senha.
+A função `validar` aplica diferentes funções a uma senha.
 Se todas retornarem verdadeiro, o resultado é verdadeiro.
 Se uma retornar falso, o resultado será falso e as
 funções seguintes não serão chamadas.
