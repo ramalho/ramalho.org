@@ -230,7 +230,7 @@ Funciona em alguns contextos.
 amostra = 10, 20, 30
 ```
 
-Assim como em Scheme, aqui `=` é um identificador válido.
+Assim como em Scheme, na minha linguagem `=` é um identificador válido.
 O mesmo identificador serve para o operador de comparação,
 com os delimitadores de uma chamada de função:
 
