@@ -22,12 +22,11 @@ C++ é uma catedral gótica, [Raku](https://raku.org/) é barroca,
 Lisp é modernista raiz Bauhaus, a sintaxe mais simples possível,
 `(f x y)`, tão simples que chega a ser incômoda.
 Como uma casa modernista feita só de retângulos de concreto e vidro:
-frígida no inverno, tórrida no verão.
+gélida no inverno, tórrida no verão.
 
 ## A sintaxe de Lisp e Scheme
 
-A sintaxe de Lisp é famosa pelos parentesis por toda parte.
-É uma sintaxe conhecida como *S-expression*.
+A sintaxe de Lisp, denominada *S-expression*, é famosa pelos parentesis por toda parte.
 
 O problema é que o uso generalizado de `(…)` não comunica
 visualmente a diferença entre semânticas diferentes.
@@ -122,14 +121,14 @@ Considere esta linha de código num sistema de lançamento de mísseis nucleares
 
 Se o `if` fosse uma função, as três expressões seriam avaliadas
 para então serem passadas para o `if`.
-A senha seria checada, os mísseis seriam lançados, e também desativados,
+A senha é checada, os mísseis são lançados, e também desativados,
 independente do resultado de `(checar senha)`.
-Toda vez seria assim, incondicionalmente.
-A função `if` seria invocada só depois de executadas essas três chamadas,
-recebendo seus três valores como argumentos.
-Seria tarde demais: os mísseis já estariam voando.
+Toda vez assim, incondicionalmente.
+A função `if` é invocada só depois de executadas essas três chamadas,
+para calcular os valores dos três argumentos necessários.
+Será tarde demais: os mísseis já estão voando.
 
-Avaliação condicional pede uma sintaxe especial.
+Avaliação condicional deve ter uma sintaxe especial.
 
 Em Python a sintaxe do `if` é
 bem diferente de chamada de função:
@@ -160,7 +159,7 @@ if{validar(senha) lançar(mísseis) desativar(mísseis)}
 Os princípios básicos da *sintaxe L* são:
 
 * Colocar o primeiro identificador fora dos delimitadores: `f(x y)` em vez de `(f x y)`.
-Faz sentido porque o primeiro elemento da expressão define o que ela faz.
+Facilita a leitura porque o primeiro elemento da expressão define o que ela faz.
 * Usar delimitadores diferentes para expressões de naturezas diferentes.
 
 A sintaxe geral é `ident「 … 」` onde `ident` é um identificador,
@@ -301,7 +300,6 @@ Python idiomático, usando atribuição de tuplas
 para atualizar duas variáveis em parelo:
 
 ```
-
 def mdc(m, n):
     while n != 0:
         m, n = n, m % n
@@ -368,7 +366,7 @@ conjunção em Python: `and` e `&`.
 
 O `and` de Python é um operador especial que não pode ser
 sobrecarregado, porque ele tem uma regra de avaliação
-difente dos operadores comuns: na expressão `a() and b()`,
+diferente dos operadores comuns: na expressão `a() and b()`,
 a função `b()` só será executada se `a()` devolver um
 valor verdadeiro. Isso se chama "avaliação em curto circuito":
 quando o primeiro operando é falso, o segundo não é computado.
