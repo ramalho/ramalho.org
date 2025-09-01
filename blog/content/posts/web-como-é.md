@@ -37,6 +37,10 @@ Querem fazer um app e entrar no jogo dos oligopólios e dos oligarcas.
 Vamos entender a Web como ela é,<br>
 para construir a Web como ela deve ser.
 
-## HTTP
+## Server-side, ou back-end, ou a cozinha
 
 * [Códigos 3XX](/posts/web-http-3xx)
+
+## Client-side, ou front-end, ou o salão
+
+* [HTML em N paragrafos](/posts/web-html)
