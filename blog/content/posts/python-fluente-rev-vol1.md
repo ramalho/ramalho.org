@@ -15,6 +15,8 @@ cerca de 400 páginas por volume.
 
 Agora estou trabalhando no **volume 1**, sub-título _Dados + Funções_.
 
+<!--more--> 
+
 O _preprint_ **pre2** está aqui:
 
 https://pythonfluente.com/pyfl-vol1-pre2.pdf
