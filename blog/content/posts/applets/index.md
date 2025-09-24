@@ -23,15 +23,15 @@ até carregar GIFs demorava.
 Em casa usávamos modems discados com banda de 28.8 Kbps
 (hoje uma banda larga comum de 300 Mbs é 10417 vezes mais rápida).
 
-Na real, o que inviabilizou usar applets no BOL não foi a lentidão.
+Na real, o que inviabilizou usar applets no BOL não foi a lentidão. Foi isso:
 
 ![Quadrado cinza de 100x100 pixels, imitando uma applet que ainda não carregou](cinza.gif)
 
-Foi uma falha grave de interface:
+Uma falha grave na interface de usuário:
 antes da applet começar a funcionar,
 os navegadores exibiam um retângulo cinza no lugar da applet,
 e não havia nenhuma indicação de progresso.
-Isso inevitavelmente parecia um defeito no design.
+Isso parecia um defeito no design.
 Era inaceitável porque a Abril era conhecida pela
 excelente qualidade gráfica das suas publicações,
 do design até a impressão.

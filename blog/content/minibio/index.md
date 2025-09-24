@@ -9,6 +9,7 @@ Luciano Ramalho programa profissionalmente
 em Python desde 1998. Escreveu o livro
 [Fluent Python](https://www.amazon.com.br/Fluent-Python-Concise-Effective-Programming/dp/1492056359)
 publicado pela O’Reilly em duas edições e nove idiomas.
+Foi diretor técnico do BOL na Abril S/A e consultor principal na Thoughtworks.
 É co-fundador da [Associação Python Brasil](https://apyb.python.org.br/index.html) e do
 laboratório comunitário [Garoa Hacker Clube](https://garoa.net.br),
 o primeiro hackerspace do Brasil.
