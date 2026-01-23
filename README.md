@@ -1,7 +1,7 @@
-# Ramalho.org
+# Este repositório está arquivado
 
-Neste repositório tem conteúdo e código
-que uso ou
-já usei ou
-talvez um dia use
-para fazer o https://ramalho.org.
+Migrei o conteúdo para:
+
+https://codeberg.org/ramalho/ramalho.org
+
+Atualizações só no [codeberg.org](https://codeberg.org/ramalho/ramalho.org).
